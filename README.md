@@ -7,21 +7,21 @@
 
 # GeleBatmPUG
 
-Es una sensilla estructura para plantillas Html estaticos.
+Es una sencilla  estructura para plantillas Html estaticos.
 
-## Caracteristicas de GeleBatmPUG
+## Características de GeleBatmPUG
 
-* Usa Webpack 5 para automarizar las tareas
-* Esta basado en Sass y pug.
+* Usa Webpack 5 para automatizar las tareas
+* Está basado en Sass y pug.
 * Compila Hbs y actualiza el navegador con cada cambio
-* Captura errores en Sass, Hbs y Js evitando que gulp se detenga.
+* Captura errores en Sass, Hbs y Js evitando que webpack se detenga.
 * Crea los sourcemaps de los archivos compilados
 
 ## Modo de uso
 
 1. Cree un fork de este repositorio y clonelo en local (o descargue este repositorio por zip).
-2. Ejecute `npm install` (asegurese de tener npm actualizado y Nodejs en v6 como minimo)
-3. Ejecute `npm run build` para compilar sus archivos para produccion
+2. Ejecute `npm install` (asegúrese de tener npm actualizado y Nodejs en v6 como mínimo)
+3. Ejecute `npm run build` para compilar sus archivos para producción
 4. Ejecute `npm run dev` para compilar sus archivos para desarrollo
 5. Ejecute `npm run watch` para escuchar los cambios y compilarlos
 6. Ejecute `npm start` para iniciar servidor local y reflejar cambios al instante
@@ -30,9 +30,9 @@ Es una sensilla estructura para plantillas Html estaticos.
 ## Estructura
 
 1. La carpeta **src** contiene la estructura de archivos con la que trabajará
-2. La carpeta **public** contiene los archivos compilados que deberan llevarse a producción
+2. La carpeta **public** contiene los archivos compilados que deberán llevarse a producción
 3. Para Sass importe sus partials desde `app.scss`, el orden está indicado en el mismo archivo
-4. Para Hbs, la carpeta `pages` contiene las paginas del proyecto y la carpeta `includes` los bloques.
+4. Para Hbs, la carpeta `pages` contiene las páginas del proyecto y la carpeta `includes` los bloques.
 5. Para Js, la carpeta `modules` contiene los módulos que serán importados desde `app.js`
 
 ```
