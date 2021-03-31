@@ -1,6 +1,6 @@
 <p align="center">
   <br>
-  <img width="500" src="src/img/Webpack + pug.png" alt="Webpack + pug">
+  <img width="500" src="src/img/logo.png" alt="Webpack + pug">
   <br>
   <br>
 </p>
