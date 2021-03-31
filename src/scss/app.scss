@@ -1,0 +1,31 @@
+/*!
+ * gelebatm-pug v0.0.1
+ * Copyright 2021 Pirulug
+ */
+
+// Config
+@import "config/functions";
+@import "config/variables";
+@import "config/mixins";
+
+// Base
+@import "base/vendors"; //<--- fameworks como bootstrap, fotnawesome, etc
+@import "base/base";
+
+// LAYOUT
+// Son las diviciones que le haces a tu pagina
+@import "layout/layout";
+
+// COMPONENTES
+// Son elementos compuestos como un card, button, menus, etc
+@import "components/buttons";
+@import "components/cards";
+@import "components/menus";
+
+// THEME
+// Tipografias y colores
+@import "theme/typography";
+
+// HACKS
+// Para solucionar conflictos
+@import "hacks/hacks";
