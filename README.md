@@ -20,7 +20,7 @@ Es una sencilla  estructura para plantillas Html estaticos.
 ## Modo de uso
 
 1. Cree un fork de este repositorio y clonelo en local (o descargue este repositorio por zip).
-2. Ejecute `npm install` (asegúrese de tener npm actualizado y Nodejs en v6 como mínimo)
+2. Ejecute `npm install` (asegúrese de tener npm actualizado y Nodejs en verción 6 como mínimo)
 3. Ejecute `npm run build` para compilar sus archivos para producción
 4. Ejecute `npm run dev` para compilar sus archivos para desarrollo
 5. Ejecute `npm run watch` para escuchar los cambios y compilarlos
