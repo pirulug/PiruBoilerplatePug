@@ -1,17 +1,13 @@
+const webpack = require("webpack");
 const path = require("path");
 const fs = require("fs");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const FileManagerPlugin = require("filemanager-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const BeautifyHtmlWebpackPlugin = require("beautify-html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const PATH = {
-  src: path.resolve(__dirname, "src"),
-  dist: path.resolve(__dirname, "dist"),
-};
-
-const PAGES_DIR = `${PATH.src}/pug/pages`;
+const PAGES_DIR = `${path.resolve(__dirname, "src")}/pug/pages`;
 const PAGES = fs
   .readdirSync(PAGES_DIR)
   .filter((fileName) => fileName.endsWith(".pug"));
@@ -22,48 +18,15 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "js/app.js",
   },
-  mode: "development",
-  plugins: [
-    // Extract css files to seperate bundle
-    new MiniCssExtractPlugin({
-      filename: "css/app.css",
-      chunkFilename: "css/app.css",
-    }),
-
-    // Copiar img fonts
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: "src/fonts", to: "fonts" },
-        { from: "src/img", to: "img" },
-      ],
-    }),
-
-    // Eliminar Archivos para actualizar
-    new CleanWebpackPlugin(),
-
-    // Cargar paginas de .pug
-    ...PAGES.map(
-      (page) =>
-        new HtmlWebpackPlugin({
-          template: `${PAGES_DIR}/${page}`,
-          filename: `./${page.replace(/\.pug/, ".html")}`,
-          minify: {
-            collapseWhitespace: false,
-            keepClosingSlash: false,
-            removeComments: false,
-            removeRedundantAttributes: false,
-            removeScriptTypeAttributes: false,
-            removeStyleLinkTypeAttributes: false,
-            useShortDoctype: false,
-            preventAttributesEscaping: false,
-          },
-          inject: true,
-        })
-    ),
-  ],
   module: {
     rules: [
-      // SCSS
+      // JS
+      {
+        test: /\.js$/,
+        use: "babel-loader",
+        exclude: /node_modules/,
+      },
+      // Load SCSS SASS CSS
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -108,10 +71,72 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "css/app.css",
+      chunkFilename: "css/app.css",
+    }),
+    // Copiar img fonts
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "src/fonts", to: "fonts" },
+        { from: "src/img", to: "img" },
+      ],
+    }),
+    // Cargar paginas de .pug
+    ...PAGES.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: `./${page.replace(/\.pug/, ".html")}`,
+          minify: {
+            collapseWhitespace: false,
+            keepClosingSlash: false,
+            removeComments: false,
+            removeRedundantAttributes: false,
+            removeScriptTypeAttributes: false,
+            removeStyleLinkTypeAttributes: false,
+            useShortDoctype: false,
+            preventAttributesEscaping: false,
+          },
+          inject: false,
+        })
+    ),
+    // Arreglar HTML
+    new BeautifyHtmlWebpackPlugin({
+      indent_size: 2,
+      indent_char: " ",
+      indent_with_tabs: true,
+      editorconfig: false,
+      eol: "\n",
+      end_with_newline: false,
+      indent_level: 0,
+      preserve_newlines: false,
+      max_preserve_newlines: 2,
+      space_in_paren: false,
+      space_in_empty_paren: false,
+      jslint_happy: false,
+      space_after_anon_function: false,
+      space_after_named_function: false,
+      brace_style: "collapse",
+      unindent_chained_methods: false,
+      break_chained_methods: false,
+      keep_array_indentation: false,
+      unescape_strings: false,
+      wrap_line_length: 0,
+      e4x: false,
+      comma_first: false,
+      operator_position: "before-newline",
+      indent_empty_lines: false,
+      templating: ["auto"],
+    }),
+    // new CleanWebpackPlugin(),
+  ],
   devServer: {
     contentBase: path.join(__dirname, "public"),
     compress: true,
-    port: 6969,
+    port: 9191,
     open: true,
+    // open: "firefox",
   },
 };

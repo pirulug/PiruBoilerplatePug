@@ -1,0 +1,35 @@
+
+//- gelebatm-pug v0.0.1
+//- Copyright 2021 Pirulug
+
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Gelebatm
+
+    link(rel="stylesheet", href="css/app.css")
+  body
+
+    .wrapper
+      include ../includes/sidebar
+      .main
+        include ../includes/navbar
+        main.content
+          .container-fluid.p-0
+            .row.mb-2.mb-xl-3
+              .col-auto.d-none.d-sm-block
+                h3
+                  strong Gelebatm
+              .col-auto.ms-auto.text-end.mt-n1
+                nav(aria-label='breadcrumb')
+                  ol.breadcrumb.bg-transparent.p-0.mt-1.mb-0
+                    li.breadcrumb-item
+                      a(href='#') Gelebatm
+                    li.breadcrumb-item.active(aria-current='page') Gelebatm
+            block content
+        include ../includes/footer
+
+    script(src="js/app.js")
