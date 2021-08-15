@@ -13,8 +13,8 @@ Es una sencilla  estructura para plantillas Html estaticos.
 
 * Usa Webpack 5 para automatizar las tareas
 * Está basado en Sass y pug.
-* Compila Hbs y actualiza el navegador con cada cambio
-* Captura errores en Sass, Hbs y Js evitando que webpack se detenga.
+* Compila pug y actualiza el navegador con cada cambio
+* Captura errores en Sass, pug y Js evitando que webpack se detenga.
 * Crea los sourcemaps de los archivos compilados
 
 ## Modo de uso
@@ -32,7 +32,7 @@ Es una sencilla  estructura para plantillas Html estaticos.
 1. La carpeta **src** contiene la estructura de archivos con la que trabajará
 2. La carpeta **public** contiene los archivos compilados que deberán llevarse a producción
 3. Para Sass importe sus partials desde `app.scss`, el orden está indicado en el mismo archivo
-4. Para Hbs, la carpeta `pages` contiene las páginas del proyecto y la carpeta `includes` los bloques.
+4. Para pug, la carpeta `pages` contiene las páginas del proyecto y la carpeta `includes` los bloques.
 5. Para Js, la carpeta `modules` contiene los módulos que serán importados desde `app.js`
 
 ```
