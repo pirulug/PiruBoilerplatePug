@@ -5,7 +5,7 @@
   <br>
 </p>
 
-# GeleBatmPUG
+# PiruBoilerplatePug
 
 Es una sencilla  estructura para plantillas Html estaticos.
 

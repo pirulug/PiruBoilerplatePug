@@ -1,127 +1,51 @@
-extends ../includes/template
+extends ../includes/layout
 
 block content
-  .row
-    .col-xl-12.col-xxl-12.d-flex
-      .w-100
-        .row
-          .col-sm-3
-            .card
-              .card-body
-                h5.card-title.mb-4 Sales
-                h1.mt-1.mb-3 2.382
-                .mb-1
-                  span.text-danger
-                    i.mdi.mdi-arrow-bottom-right
-                    |  -3.65%
-                  span.text-muted Since last week
-          .col-sm-3
-            .card
-              .card-body
-                h5.card-title.mb-4 Visitors
-                h1.mt-1.mb-3 14.212
-                .mb-1
-                  span.text-success
-                    i.mdi.mdi-arrow-bottom-right
-                    |  5.25%
-                  span.text-muted Since last week
-          .col-sm-3
-            .card
-              .card-body
-                h5.card-title.mb-4 Earnings
-                h1.mt-1.mb-3 $21.300
-                .mb-1
-                  span.text-success
-                    i.mdi.mdi-arrow-bottom-right
-                    |  6.65%
-                  span.text-muted Since last week
-          .col-sm-3
-            .card
-              .card-body
-                h5.card-title.mb-4 Orders
-                h1.mt-1.mb-3 64
-                .mb-1
-                  span.text-danger
-                    i.mdi.mdi-arrow-bottom-right
-                    |  -2.25%
-                  span.text-muted Since last week
-    .col-xl-12.col-xxl-12
-      .card.flex-fill.w-100
-        .card-header
-          h5.card-title.mb-0 Recent Movement
-        .card-body.py-3
-          .chart.chart-sm
-            canvas#chartjs-dashboard-line
+  .col-lg-8
+    // Featured blog post
+    .card.mb-4
+      a(href='#!')
+        img.card-img-top(src='https://dummyimage.com/850x350/dee2e6/6c757d.jpg' alt='...')
+      .card-body
+        .small.text-muted January 1, 2021
+        h2.card-title Featured Post Title
+        p.card-text
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
+        a.btn.btn-primary(href='#!') Leer más &rarr;
+    // Nested row for non-featured blog posts
+    .row
 
-  .row
-    .col-12.col-lg-12.col-xxl-12.d-flex
-      .card.flex-fill
-        .card-header
-          h5.card-title.mb-0 Latest Projects
-        table.table.table-hover.my-0
-          thead
-            tr
-              th Name
-              th.d-none.d-xl-table-cell Start Date
-              th.d-none.d-xl-table-cell End Date
-              th Status
-              th.d-none.d-md-table-cell Assignee
-          tbody
-            tr
-              td Project Apollo
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-success Done
-              td.d-none.d-md-table-cell Vanessa Tucker
-            tr
-              td Project Fireball
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-danger Cancelled
-              td.d-none.d-md-table-cell William Harris
-            tr
-              td Project Hades
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-success Done
-              td.d-none.d-md-table-cell Sharon Lessman
-            tr
-              td Project Nitro
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-warning In progress
-              td.d-none.d-md-table-cell Vanessa Tucker
-            tr
-              td Project Phoenix
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-success Done
-              td.d-none.d-md-table-cell William Harris
-            tr
-              td Project X
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-success Done
-              td.d-none.d-md-table-cell Sharon Lessman
-            tr
-              td Project Romeo
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-success Done
-              td.d-none.d-md-table-cell Christina Mason
-            tr
-              td Project Wombat
-              td.d-none.d-xl-table-cell 01/01/2021
-              td.d-none.d-xl-table-cell 31/06/2021
-              td
-                span.badge.bg-warning In progress
-              td.d-none.d-md-table-cell William Harris
+      -var n=1
 
+      while n <= 6
+        .col-lg-6
+          // Blog post
+          .card.mb-4
+            a(href='#!')
+              img.card-img-top(src='https://dummyimage.com/700x350/dee2e6/6c757d.jpg' alt='...')
+            .card-body
+              .small.text-muted January 1, 2021
+              h2.card-title.h4 Post Title #{n++}
+              p.card-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.
+              a.btn.btn-primary(href='#!') Leer más &rarr;
 
+    // Pagination
+    nav(aria-label='Pagination')
+      hr.my-0
+      ul.pagination.justify-content-center.my-4
+        li.page-item.disabled
+          a.page-link(href='#' tabindex='-1' aria-disabled='true') Más nuevo
+        li.page-item.active(aria-current='page')
+          a.page-link(href='#!') 1
+        li.page-item
+          a.page-link(href='#!') 2
+        li.page-item
+          a.page-link(href='#!') 3
+        li.page-item.disabled
+          a.page-link(href='#!') ...
+        li.page-item
+          a.page-link(href='#!') 15
+        li.page-item
+          a.page-link(href='#!') Mas viejo
+  

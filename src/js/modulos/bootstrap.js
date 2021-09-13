@@ -1,1 +1,3 @@
-import bootstrap from "bootstrap";
+// https://getbootstrap.com/
+
+import * as bootstrap from "bootstrap";

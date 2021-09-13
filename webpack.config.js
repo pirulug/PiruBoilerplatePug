@@ -133,10 +133,18 @@ module.exports = {
     // new CleanWebpackPlugin(),
   ],
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    watchFiles: ["src/**/*"],
     compress: true,
-    port: 9191,
+    port: 9000,
+    // open: {
+    //   app: {
+    //     name: "firefox",
+    //   },
+    // },
     open: true,
-    // open: "firefox",
+    liveReload: true,
   },
 };
