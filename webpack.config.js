@@ -1,87 +1,72 @@
-const webpack = require("webpack");
-const path = require("path");
-const fs = require("fs");
+const Webpack = require("webpack");
+const Path = require("path");
+const Fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BeautifyHtmlWebpackPlugin = require("beautify-html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const FileManagerPlugin = require("filemanager-webpack-plugin");
 
-const PAGES_DIR = `${path.resolve(__dirname, "src")}/pug/pages`;
-const PAGES = fs
+const opts = {
+  rootDir: process.cwd(),
+  devBuild: process.env.NODE_ENV !== "production"
+};
+
+// PUG
+const PAGES_DIR = `${Path.resolve(__dirname, "src")}/pug/pages`;
+const PAGES = Fs
   .readdirSync(PAGES_DIR)
   .filter((fileName) => fileName.endsWith(".pug"));
 
 module.exports = {
-  entry: "./src/js/app.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "js/app.js",
+  entry: {
+    app: "./src/js/app.js"
   },
-  module: {
-    rules: [
-      // JS
-      {
-        test: /\.js$/,
-        use: "babel-loader",
-        exclude: /node_modules/,
-      },
-      // Load SCSS SASS CSS
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader",
-        ],
-      },
-      // Load fonts
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "/[name].[ext]",
-              outputPath: "fonts/",
-              publicPath: "../fonts/",
-            },
-          },
-        ],
-      },
-      // Load images
-      {
-        test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "img/",
-              publicPath: "../img/",
-            },
-          },
-        ],
-      },
-      // Pug
-      {
-        test: /\.pug$/,
-        use: ["pug-loader?{pretty:true}"],
-      },
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
+  devtool:
+    process.env.NODE_ENV === "production" ? "source-map" : "inline-source-map",
+  output: {
+    path: Path.join(opts.rootDir, "dist"),
+    pathinfo: opts.devBuild,
+    filename: "js/[name].js",
+    chunkFilename: 'js/[name].js',
+  },
+  performance: { hints: false },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          ecma: 5
+        }
+      }),
+      new CssMinimizerPlugin({})
     ],
+    runtimeChunk: false
   },
   plugins: [
+    // Extract css files to seperate bundle
     new MiniCssExtractPlugin({
       filename: "css/app.css",
-      chunkFilename: "css/app.css",
+      chunkFilename: "css/app.css"
     }),
-    // Copiar img fonts
+    // Copy fonts and images to dist
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/fonts", to: "fonts" },
-        { from: "src/img", to: "img" },
-      ],
+        { from: "src/img", to: "img" }
+      ]
+    }),
+    // Copy dist folder to static
+    new FileManagerPlugin({
+      events: {
+        onEnd: {
+          copy: [
+            { source: "./dist/", destination: "./static" }
+          ]
+        }
+      }
     }),
     // Cargar paginas de .pug
     ...PAGES.map(
@@ -102,49 +87,73 @@ module.exports = {
           inject: false,
         })
     ),
-    // Arreglar HTML
-    new BeautifyHtmlWebpackPlugin({
-      indent_size: 2,
-      indent_char: " ",
-      indent_with_tabs: true,
-      editorconfig: false,
-      eol: "\n",
-      end_with_newline: false,
-      indent_level: 0,
-      preserve_newlines: false,
-      max_preserve_newlines: 2,
-      space_in_paren: false,
-      space_in_empty_paren: false,
-      jslint_happy: false,
-      space_after_anon_function: false,
-      space_after_named_function: false,
-      brace_style: "collapse",
-      unindent_chained_methods: false,
-      break_chained_methods: false,
-      keep_array_indentation: false,
-      unescape_strings: false,
-      wrap_line_length: 0,
-      e4x: false,
-      comma_first: false,
-      operator_position: "before-newline",
-      indent_empty_lines: false,
-      templating: ["auto"],
-    }),
-    // new CleanWebpackPlugin(),
   ],
+  module: {
+    rules: [
+      // Babel-loader
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            cacheDirectory: true
+          }
+        }
+      },
+      // Css-loader & sass-loader
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader"
+        ]
+      },
+      // Load fonts
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]"
+        }
+      },
+      // Load images
+      {
+        test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+        type: "asset/resource",
+        generator: {
+          filename: "img/[name][ext]"
+        }
+      },
+      // Pug
+      {
+        test: /\.pug$/,
+        use: ["pug-loader?{pretty:true}"],
+      },
+    ]
+  },
+  resolve: {
+    extensions: [".js", ".scss"],
+    modules: ["node_modules"],
+    alias: {
+      request$: "xhr"
+    }
+  },
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: Path.join(__dirname, "static")
     },
     watchFiles: ["src/**/*"],
     compress: true,
-    port: 9000,
+    port: 6969,
     // open: {
     //   app: {
     //     name: "firefox",
     //   },
     // },
     open: true,
-    liveReload: true,
-  },
+    liveReload: true
+  }
 };
