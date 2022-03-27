@@ -36,44 +36,55 @@ Es una sencilla  estructura para plantillas Html estaticos.
 5. Para Js, la carpeta `modules` contiene los módulos que serán importados desde `app.js`
 
 ```
-├───src/
-│   ├───fonts/
-│   │   └───piru.ttf
-│   ├───img/
-│   │   ├───piru.jpg
-│   │   └───Webpack + Pug.png
-│   ├───js/
-│   │   ├───modulos/
-│   │   │   └───bootstrap.js 
-│   │   └───app.js
-│   ├───pug/
-│   │   ├───includes/
-│   │   ├───mixins/
-│   │   └───pages/
-│   │       ├───contac.pug
-│   │       └───index.pug
-│   └───scss/
-│       ├───base/
-│       │   ├───_base.scss
-│       │   └───_vendors.scss
-│       ├───components/
-│       │   ├───_buttons.scss
-│       │   ├───_cards.scss
-│       │   └───_menus.scss
-│       ├───config/
-│       │   ├───_functions.scss
-│       │   ├───_mixins.scss
-│       │   └───_variables.scss
-│       ├───hacks/
-│       │   └───_hacks.scss
-│       ├───layout/
-│       │   └───_layout.scss
-│       ├───theme/
-│       │   └───_typography.scss
-│       └───app.scss
-├───package-lock.json
-├───package.json
-├───postcss.config.js
-├───README.md
-└───webpack.config.js
+├───📁 src/
+│   ├───📁 fonts/
+│   │   └───📄 piru.ttf
+│   ├───📁 img/
+│   │   ├───📄 logo.png
+│   │   └───📄 piru.jpg
+│   ├───📁 js/
+│   │   ├───📁 modulos/
+│   │   │   ├───📄 bootstrap.js
+│   │   │   └───📄 feathericons.js
+│   │   └───📄 app.js
+│   ├───📁 pug/
+│   │   ├───📁 includes/
+│   │   │   ├───📄 footer.pug
+│   │   │   ├───📄 header.pug
+│   │   │   ├───📄 layout.pug
+│   │   │   ├───📄 navbar.pug
+│   │   │   └───📄 sidebar.pug
+│   │   └───📁 pages/
+│   │       ├───📄 index.pug
+│   │       └───📄 post.pug
+│   └───📁 scss/
+│       ├───📁 base/
+│       │   ├───📄 _reset.scss
+│       │   └───📄 _typografi.scss
+│       ├───📁 components/
+│       │   ├───📄 _button.scss
+│       │   └───📄 _card.scss
+│       ├───📁 config/
+│       │   ├───📄 _functions.scss
+│       │   ├───📄 _mixins.scss
+│       │   └───📄 _variables.scss
+│       ├───📁 hacks/
+│       │   └───📄 _hack.scss
+│       ├───📁 layout/
+│       │   ├───📄 _footer.scss
+│       │   ├───📄 _header.scss
+│       │   └───📄 _wrapper.scss
+│       ├───📁 themes/
+│       │   ├───📄 _dark.scss
+│       │   └───📄 _light.scss
+│       ├───📁 vendors/
+│       │   └───📄 _vendors.scss
+│       └───📄 app.scss
+├───📄 .babelrc
+├───📄 .editorconfig
+├───📄 package-lock.json
+├───📄 package.json
+├───📄 postcss.config.js
+├───📄 README.md
+└───📄 webpack.config.js
 ```

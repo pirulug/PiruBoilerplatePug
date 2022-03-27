@@ -59,15 +59,15 @@ module.exports = {
       ]
     }),
     // Copy dist folder to static
-    new FileManagerPlugin({
-      events: {
-        onEnd: {
-          copy: [
-            { source: "./dist/", destination: "./static" }
-          ]
-        }
-      }
-    }),
+    // new FileManagerPlugin({
+    //   events: {
+    //     onEnd: {
+    //       copy: [
+    //         { source: "./dist/", destination: "./static" }
+    //       ]
+    //     }
+    //   }
+    // }),
     // Cargar paginas de .pug
     ...PAGES.map(
       (page) =>
@@ -143,11 +143,11 @@ module.exports = {
   },
   devServer: {
     static: {
-      directory: Path.join(__dirname, "static")
+      directory: Path.join(__dirname, "dist")
     },
     watchFiles: ["src/**/*"],
     compress: true,
-    port: 6969,
+    port: 6970,
     // open: {
     //   app: {
     //     name: "firefox",

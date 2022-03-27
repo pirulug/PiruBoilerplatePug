@@ -1,27 +1,27 @@
 // Config
-@import 'config/variables';
-@import 'config/functions';
-@import 'config/mixins';
+@import "config/variables";
+@import "config/functions";
+@import "config/mixins";
 
 // Base
-@import 'base/reset';
-@import 'base/typografi';
+@import "base/reset";
+@import "base/typografi";
 
 // Vendors
-@import 'vendors/vendors';
+@import "vendors/vendors";
 
 // Layout
-@import 'layout/wrapper';
-@import 'layout/header';
-@import 'layout/footer';
+@import "layout/wrapper";
+@import "layout/header";
+@import "layout/footer";
 
 // Components
-@import 'components/button';
-@import 'components/card';
+@import "components/button";
+@import "components/card";
 
 // Themes
-@import 'themes/dark';
-@import 'themes/light';
+@import "themes/dark";
+@import "themes/light";
 
 // Hacks
 @import "hacks/hack";
