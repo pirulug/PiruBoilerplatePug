@@ -1,10 +1,21 @@
-// const purgecss = require("@fullhuman/postcss-purgecss");
+const purgecss = require("@fullhuman/postcss-purgecss");
 
-module.exports = {
-  plugins: [
-    require("autoprefixer"),
-    // purgecss({
-    //   content: ["./dist/*.html"],
-    // }),
-  ],
-};
+process.env.NODE_ENV === "production"
+  ? (module.exports = {
+      plugins: [
+        require("autoprefixer"),
+
+        purgecss({
+          content: ["./dist/*.html"],
+        }),
+      ],
+    })
+  : (module.exports = {
+      plugins: [
+        require("autoprefixer"),
+
+        // purgecss({
+        //   content: ["./dist/*.html"],
+        // }),
+      ],
+    });
