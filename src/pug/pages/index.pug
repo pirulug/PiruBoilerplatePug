@@ -1,5 +1,10 @@
 extends ../includes/layout
 
+append config
+  -pageName = 'Home'
+
+block styles
+
 block content
   .col-lg-8
     // Featured blog post
@@ -48,3 +53,6 @@ block content
           a.page-link(href='#!') 15
         li.page-item
           a.page-link(href='#!') Mas viejo
+
+block scripts 
+
