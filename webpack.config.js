@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const opts = {
   rootDir: process.cwd(),
@@ -38,7 +39,7 @@ module.exports = {
       new TerserPlugin({
         parallel: true,
         terserOptions: {
-          ecma: 5
+          ecma: 6
         }
       }),
       new CssMinimizerPlugin({})
@@ -46,6 +47,8 @@ module.exports = {
     runtimeChunk: false
   },
   plugins: [
+    // DELETE
+    new CleanWebpackPlugin(),
     // Extract css files to seperate bundle
     new MiniCssExtractPlugin({
       filename: "css/app.css",
@@ -59,21 +62,21 @@ module.exports = {
       ]
     }),
     // Copy dist folder to static
-    // new FileManagerPlugin({
-    //   events: {
-    //     onEnd: {
-    //       copy: [
-    //         { source: "./dist/", destination: "./static" }
-    //       ]
-    //     }
-    //   }
-    // }),
+    new FileManagerPlugin({
+      events: {
+        onEnd: {
+          copy: [
+            { source: "./dist/", destination: "./static" }
+          ]
+        }
+      }
+    }),
     // Cargar paginas de .pug
     ...PAGES.map(
       (page) =>
         new HtmlWebpackPlugin({
           template: `${PAGES_DIR}/${page}`,
-          filename: `./${page.replace(/\.pug/, ".html")}`,
+          filename: `${Path.resolve(__dirname, "static")}/${page.replace(/\.pug/, ".html")}`,
           minify: {
             collapseWhitespace: false,
             keepClosingSlash: false,
