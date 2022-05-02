@@ -1,27 +1,33 @@
-// Config
-@import "config/variables";
-@import "config/functions";
-@import "config/mixins";
+// Variables
+@import "1-variables/app";
 
-// Base
-@import "base/reset";
-@import "base/typografi";
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
 
-// Vendors
-@import "vendors/vendors";
+// Theme mixins
+@import "2-mixins/button";
 
-// Layout
-@import "layout/wrapper";
-@import "layout/header";
-@import "layout/footer";
+// Theme components
+@import "3-components/buttons";
 
-// Components
-@import "components/button";
-@import "components/card";
+// Theme layout
+@import "4-layout/header";
 
-// Themes
-@import "themes/dark";
-@import "themes/light";
+// Theme utilities
+@import "5-utilities/cursors";
 
-// Hacks
-@import "hacks/hack";
+// Theme plugins
+// FontAwesome
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/v4-shims";
+
+// Theme plugin styles
+@import "6-vendor/vendor";
+
+// Theme styles
+@import "7-theme/dark";
+@import "7-theme/light";
