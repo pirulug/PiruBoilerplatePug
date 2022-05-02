@@ -7,7 +7,7 @@
 
 # PiruBoilerplatePug
 
-Es una sencilla  estructura para plantillas Html estaticos.
+Es una sencilla estructura para plantillas Html estaticos.
 
 ## Características de GeleBatmPUG
 
