@@ -76,7 +76,7 @@ module.exports = {
       (page) =>
         new HtmlWebpackPlugin({
           template: `${PAGES_DIR}/${page}`,
-          filename: `${Path.resolve(__dirname, "static")}/${page.replace(/\.pug/, ".html")}`,
+          filename: `./${page.replace(/\.pug/, ".html")}`,
           minify: {
             collapseWhitespace: false,
             keepClosingSlash: false,
