@@ -1,11 +1,3 @@
-// FontAwesome
-$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/regular";
-@import "~@fortawesome/fontawesome-free/scss/solid";
-@import "~@fortawesome/fontawesome-free/scss/brands";
-@import "~@fortawesome/fontawesome-free/scss/v4-shims";
-
 // Litera 5.1.3
 // Bootswatch
 
@@ -15,11 +7,11 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
   font-size: $font-size-sm;
 
   &.bg-dark {
-    background-color: $success !important;
+    background-color: $success  !important;
   }
 
   &.bg-light {
-    background-color: $white !important;
+    background-color: $white  !important;
     border: 1px solid rgba(0, 0, 0, .1);
 
     &.navbar-fixed-top {
@@ -88,17 +80,21 @@ table,
     text-decoration: underline;
   }
 
-  @each $color, $value in $theme-colors {
+  @each $color,
+  $value in $theme-colors {
     &-#{$color} {
       @if $enable-gradients {
         background: $value linear-gradient($value, mix($body-bg, $value, 15%)) repeat-x;
-      } @else {
+      }
+
+      @else {
         background-color: $value;
       }
     }
   }
 
   &-light {
+
     &,
     a,
     .alert-link {

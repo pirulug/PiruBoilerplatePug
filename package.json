@@ -17,6 +17,7 @@
     "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --progress",
     "watch": "webpack --config webpack.config.js --watch --progress",
     "start": "webpack serve --config webpack.config.js --progress",
+    "beautify": "js-beautify dist/*.html -r",
     "prepublishOnly": "cross-env NODE_ENV=production webpack --progress --config webpack.config.js"
   },
   "author": "Pirulug",
@@ -26,12 +27,11 @@
     "url": "git+https://github.com/pirulug/PiruBoilerplatePug.git"
   },
   "devDependencies": {
-    "@babel/core": "7.19.0",
+    "@babel/core": "7.19.1",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
-    "@babel/preset-env": "7.19.0",
+    "@babel/preset-env": "7.19.1",
     "@babel/register": "7.18.9",
-    "@fullhuman/postcss-purgecss": "^4.1.3",
-    "autoprefixer": "10.4.8",
+    "autoprefixer": "10.4.12",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.5",
     "clean-webpack-plugin": "^4.0.0",
@@ -39,10 +39,10 @@
     "cross-env": "7.0.3",
     "css-loader": "6.7.1",
     "css-minimizer-webpack-plugin": "4.1.0",
-    "eslint": "8.23.0",
+    "eslint": "8.24.0",
     "file-loader": "6.2.0",
-    "filemanager-webpack-plugin": "7.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "js-beautify": "^1.14.6",
     "mini-css-extract-plugin": "2.6.1",
     "node-sass": "7.0.3",
     "postcss": "^8.4.16",
@@ -54,7 +54,7 @@
     "url-loader": "4.1.1",
     "webpack": "5.74.0",
     "webpack-cli": "4.10.0",
-    "webpack-dev-server": "4.11.0"
+    "webpack-dev-server": "4.11.1"
   },
   "dependencies": {
     "@babel/polyfill": "7.12.1",
