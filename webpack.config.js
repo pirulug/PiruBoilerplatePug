@@ -2,6 +2,9 @@ const Webpack = require("webpack");
 const Path = require("path");
 const Fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const BeautifyHtmlWebpackPlugin = require("@sumotto/beautify-html-webpack-plugin");
+
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -79,6 +82,17 @@ module.exports = {
           inject: false,
         })
     ),
+    // Beautify
+    new BeautifyHtmlWebpackPlugin({
+      end_with_newline: true,
+      indent_size: 2,
+      indent_with_tabs: true,
+      indent_inner_html: true,
+      preserve_newlines: true,
+      extra_liners: ["!--"],
+      unformatted: [],
+      inline: [],
+    }),
   ],
   module: {
     rules: [

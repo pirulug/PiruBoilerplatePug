@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.0.1 - 14/10/2022
+
+- Add HTML beautify
+
 ## v4.0.0 - 24/09/2022
 
 - Delete `filemanager-webpack-plugin`
