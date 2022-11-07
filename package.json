@@ -17,7 +17,6 @@
     "dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --progress",
     "watch": "webpack --config webpack.config.js --watch --progress",
     "start": "webpack serve --config webpack.config.js --progress",
-    "beautify": "js-beautify dist/*.html -r",
     "prepublishOnly": "cross-env NODE_ENV=production webpack --progress --config webpack.config.js"
   },
   "author": "Pirulug",
