@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v4.0.2 - 14/10/2022
+
+- Delete node-sass
+- Add sass
+- Bootstrap 5.3.0-alpha1
 ## v4.0.1 - 14/10/2022
 
 - Add HTML beautify
