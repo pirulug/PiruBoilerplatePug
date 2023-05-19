@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v4.0.3 - 18/05/2023
+
+- Update dependencies
+
 ## v4.0.2 - 14/10/2022
 
 - Delete node-sass
