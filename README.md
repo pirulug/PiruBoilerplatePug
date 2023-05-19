@@ -7,33 +7,33 @@
 
 # PiruBoilerplatePug
 
-Es una sencilla estructura para plantillas Html estaticos.
+It is a simple framework for static Html templates.
 
-## Características de GeleBatmPUG
+## Features of GeleBatmPUG
 
-* Usa Webpack 5 para automatizar las tareas
-* Está basado en Sass y pug.
-* Compila pug y actualiza el navegador con cada cambio
-* Captura errores en Sass, pug y Js evitando que webpack se detenga.
-* Crea los sourcemaps de los archivos compilados
+* Uses Webpack 5 to automate tasks.
+* It is based on Sass and pug.
+* Compiles pug and updates the browser with each change.
+* Catches errors in Sass, pug and Js preventing webpack from crashing.
+* Creates sourcemaps of the compiled files.
 
-## Modo de uso
+## Mode of use
 
-1. Cree un fork de este repositorio y clonelo en local (o descargue este repositorio por zip).
-2. Ejecute `npm install` (asegúrese de tener npm actualizado y Nodejs en verción 6 como mínimo)
-3. Ejecute `npm run build` para compilar sus archivos para producción
-4. Ejecute `npm run dev` para compilar sus archivos para desarrollo
-5. Ejecute `npm run watch` para escuchar los cambios y compilarlos
-6. Ejecute `npm start` para iniciar servidor local y reflejar cambios al instante
-7. Disfrute
+1. Create a fork of this repository and clone it locally (or download this repository by zip).
+2. Run `npm install` (make sure you have npm updated and Nodejs version 6 or higher).
+3. Run `npm run build` to compile your files for production.
+4. Run `npm run dev` to compile your files for development.
+5. Run `npm run watch` to listen for changes and compile them.
+6. Run `npm start` to start local server and reflect changes instantly.
+7. Enjoy
 
-## Estructura
+## Structure
 
-1. La carpeta **src** contiene la estructura de archivos con la que trabajará
-2. La carpeta **public** contiene los archivos compilados que deberán llevarse a producción
-3. Para Sass importe sus partials desde `app.scss`, el orden está indicado en el mismo archivo
-4. Para pug, la carpeta `pages` contiene las páginas del proyecto y la carpeta `includes` los bloques.
-5. Para Js, la carpeta `modules` contiene los módulos que serán importados desde `app.js`
+1. The **src** folder contains the file structure you will be working with.
+2. The **public** folder contains the compiled files to be taken to production.
+3. For Sass import your partials from `app.scss`, the order is indicated in the same file.
+4. For pug, the `pages` folder contains the project pages and the `includes` folder the blocks.
+5. For Js, the `modules` folder contains the modules that will be imported from `app.js`.
 
 ```
 ├───📁 src/
