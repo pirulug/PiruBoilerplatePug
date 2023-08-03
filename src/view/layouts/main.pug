@@ -1,0 +1,41 @@
+//- layout.pug
+include ../config/config
+block config
+doctype html
+html(lang="en" data-bs-theme="dark")
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description' content='')
+    meta(name='author' content='')
+    title #{siteName} | #{pageName}
+
+    // Css Bootstrap
+    link(rel="stylesheet" href="css/app.css")
+
+    block styles
+  body
+
+    // Navbar
+    include ../includes/navbar
+
+    // Header
+    block header
+
+    // Page content
+    .container.mt-4
+      .row
+        // Blog
+        block content
+
+        // Sidebar
+        include ../includes/sidebar
+
+    // Footer
+    include ../includes/footer
+
+    // Js Bootstrap
+    script(src='js/app.js')
+
+    block scripts 
+
