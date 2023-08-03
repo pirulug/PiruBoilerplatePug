@@ -1,39 +1,40 @@
 <p align="center">
   <br>
-  <img width="500" src="src/img/logo.png" alt="Webpack + pug">
+  <img width="500" src="src/img/logo.png" alt="Webpack + Pug">
   <br>
   <br>
 </p>
 
 # PiruBoilerplatePug
 
-It is a simple framework for static Html templates.
+PiruBoilerplatePug is a lightweight framework for creating static HTML templates efficiently.
 
-## Features of GeleBatmPUG
+## Features
 
-* Uses Webpack 5 to automate tasks.
-* It is based on Sass and pug.
-* Compiles pug and updates the browser with each change.
-* Catches errors in Sass, pug and Js preventing webpack from crashing.
-* Creates sourcemaps of the compiled files.
+* Utilizes Webpack 5 for streamlined task automation.
+* Built on the foundation of Sass and Pug (formerly Jade).
+* Compiles Pug templates and updates the browser on every change.
+* Detects errors in Sass, Pug, and JavaScript, preventing Webpack crashes.
+* Generates source maps for compiled files.
 
-## Mode of use
+## Getting Started
 
-1. Create a fork of this repository and clone it locally (or download this repository by zip).
-2. Run `npm install` (make sure you have npm updated and Nodejs version 6 or higher).
-3. Run `npm run build` to compile your files for production.
-4. Run `npm run dev` to compile your files for development.
-5. Run `npm run watch` to listen for changes and compile them.
-6. Run `npm start` to start local server and reflect changes instantly.
-7. Enjoy
+1. Fork and clone this repository or download it as a ZIP archive.
+2. Run `npm install` (ensure you have an updated npm version and Node.js 6 or higher).
+3. Execute `npm run build` to compile files for production.
+4. Use `npm run dev` to compile files for development.
+5. Utilize `npm run watch` to automatically compile changes.
+6. Start a local server and see instant changes with `npm start`.
+7. Enjoy a streamlined workflow!
 
-## Structure
+## Project Structure
 
-1. The **src** folder contains the file structure you will be working with.
-2. The **public** folder contains the compiled files to be taken to production.
-3. For Sass import your partials from `app.scss`, the order is indicated in the same file.
-4. For pug, the `pages` folder contains the project pages and the `includes` folder the blocks.
-5. For Js, the `modules` folder contains the modules that will be imported from `app.js`.
+1. The **src** folder contains the directory structure for your work.
+2. The **public** folder holds the compiled files ready for production.
+3. Import your Sass partials in `app.scss`; their order is specified in the file.
+4. For Pug, the `pages` directory includes project pages, and `includes` contains reusable components.
+5. In the case of JavaScript, the `modules` folder encompasses importable modules in `app.js`.
+
 
 ```
 ├───📁 src/
