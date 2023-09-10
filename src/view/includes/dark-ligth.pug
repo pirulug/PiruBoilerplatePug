@@ -1,0 +1,21 @@
+.dropdown.position-fixed.bottom-0.end-0.mb-3.me-3.bd-mode-toggle.shadow.z-3
+  button#bd-theme.btn.btn-primary.py-2.dropdown-toggle.d-flex.align-items-center(type='button' aria-expanded='false' data-bs-toggle='dropdown' aria-label='Toggle theme (auto)')
+    span#bd-theme-icon.theme-icon-active.mr-1
+      i.fa.fa-sun
+    span#bd-theme-text.visually-hidden Toggle theme
+  ul.dropdown-menu.dropdown-menu-end.shadow(aria-labelledby='bd-theme-text')
+    li
+      button.dropdown-item.d-flex.align-items-center(type='button' data-bs-theme-value='light' aria-pressed='false')
+        i.fa.fa-sun.opacity-50.me-2
+        | Light
+        i.pr-check.fa.fa-check.ms-auto.d-none
+    li
+      button.dropdown-item.d-flex.align-items-center(type='button' data-bs-theme-value='dark' aria-pressed='false')
+        i.fa.fa-moon.opacity-50.me-2
+        | Dark
+        i.pr-check.fa.fa-check.ms-auto.d-none
+    li
+      button.dropdown-item.d-flex.align-items-center(type='button' data-bs-theme-value='auto' aria-pressed='true')
+        i.fa.fa-circle-half-stroke.opacity-50.me-2
+        | Auto
+        i.pr-check.fa.fa-check.ms-auto.d-none
