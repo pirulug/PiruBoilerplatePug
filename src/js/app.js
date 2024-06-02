@@ -1,8 +1,5 @@
 import "../scss/app.scss";
 
 // Bootstrap
-import "./modulos/bootstrap";
-import "./modulos/darkLigthMode";
-
-// FeatherIcons
-import "./modulos/feathericons";
+import "./modules/bootstrap";
+import "./modules/darkLigthMode";

@@ -3,13 +3,15 @@ const Path = require("path");
 const Fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const BeautifyHtmlWebpackPlugin = require("@sumotto/beautify-html-webpack-plugin");
+const PrettifyWebpackPlugin = require("pirulug-prettify-webpack-plugin");
 
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+const DeleteEmptyFilesPlugin = require("pirulug-delete-empty-files-webpack-plugin");
 
 const opts = {
   rootDir: process.cwd(),
@@ -28,10 +30,15 @@ const randomPort = Math.floor(Math.random() * (65535 - 1024) + 1024);
 module.exports = {
   entry: {
     app: "./src/js/app.js",
+    prism: "./src/plugins/prism/prism.js",
+    custom: "./src/plugins/custom/custom.js",
+    bootstrapicons: "./src/plugins/bootstrapicons/bootstrapicons.js",
+    fontawesome: "./src/plugins/fontawesome/fontawesome.js",
+    feathericons: "./src/plugins/feathericons/feathericons.js",
   },
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
-  devtool:
-    process.env.NODE_ENV === "production" ? "source-map" : "inline-source-map",
+  // devtool: process.env.NODE_ENV === "production" ? "source-map" : "inline-source-map",
+  devtool: process.env.NODE_ENV === "development" ? "source-map" : false,
   output: {
     path: Path.join(opts.rootDir, "dist"),
     pathinfo: opts.devBuild,
@@ -44,10 +51,15 @@ module.exports = {
       new TerserPlugin({
         parallel: true,
         terserOptions: {
-          ecma: 6,
+          ecma: 7,
+        },
+        extractComments: false,
+      }),
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: ["default", { discardComments: { removeAll: false } }],
         },
       }),
-      new CssMinimizerPlugin({}),
     ],
     runtimeChunk: false,
   },
@@ -56,8 +68,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     // Extract css files to seperate bundle
     new MiniCssExtractPlugin({
-      filename: "css/app.css",
-      chunkFilename: "css/app.css",
+      filename: "css/[name].css",
+      chunkFilename: "css/[name].css",
     }),
     // Copy fonts and images to dist
     new CopyWebpackPlugin({
@@ -86,16 +98,20 @@ module.exports = {
         })
     ),
     // Beautify
-    new BeautifyHtmlWebpackPlugin({
-      end_with_newline: true,
-      indent_size: 2,
-      indent_with_tabs: true,
-      indent_inner_html: true,
-      preserve_newlines: true,
-      extra_liners: ["!--"],
-      unformatted: [],
-      inline: [],
+    new PrettifyWebpackPlugin({
+      printWidth: 100,
+      tabWidth: 2,
+      useTabs: false,
+      singleQuote: true,
+      htmlWhitespaceSensitivity: "ignore",
+      endOfLine: "auto",
+      htmlWhitespaceSensitivity: "css",
+      jsxBracketSameLine: false,
+      htmlWhitespaceSensitivity: "ignore",
+      proseWrap: "always",
     }),
+    //
+    new DeleteEmptyFilesPlugin(__dirname, "dist"),
   ],
   module: {
     rules: [
@@ -139,7 +155,14 @@ module.exports = {
       // Pug
       {
         test: /\.pug$/,
-        use: ["pug-loader?{pretty:true}"],
+        use: [
+          {
+            loader: "pirulug-pug-loader",
+            options: {
+              pretty: true,
+            },
+          },
+        ],
       },
     ],
   },

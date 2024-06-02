@@ -27,9 +27,5 @@
 @import "utilities/mixins";
 @import "utilities/helpers";
 
-// Third-party Plugins and Libraries
-@import "plugins/fontawesome"; // Font Awesome
-@import "plugins/vendor"; // Otras librerías y estilos externos
-
 // Additional Styles and Hacks
 @import "hacks/hack";
